@@ -4,8 +4,6 @@ require 'open-uri'
 require 'colorize'
 require_relative './comment.rb'
 
-# PAGE_URL = "https://news.ycombinator.com/item?id=7663775"
-# PAGE_URL = "./post.html"
 HTML_FILE = open(ARGV[0])
 
 class Post
@@ -21,7 +19,6 @@ class Post
     @scraped_comments = (@@doc.search('body .comment').map { |comment_array| comment_array.inner_text })
     @scraped_comments.each { |comment| self.add_comment(comment) }
 
-# binding.pry
   end
 
   def comments
@@ -38,11 +35,6 @@ class Post
     @comment_array.push(Comment.new(comment))
   end
 end
-
-# class Comment
-#   def initialize
-#   end
-# end
 
 
 
